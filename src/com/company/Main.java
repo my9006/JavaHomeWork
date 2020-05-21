@@ -1,8 +1,6 @@
 package com.company;
 
-import javax.swing.*;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.stream.IntStream;
@@ -12,78 +10,78 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		//		4.1 Createa Array, Print it, query a value
-		/*
-		int[] myArray = intArrayGenerator(10);
-		intArrayPrinter(myArray);
-		checkValueInArray(scanner.nextInt(), myArray);
 
-		 */
+		int[] arrayToCheckValue = intArrayGenerator(10);
+		arrayPrinter(arrayToCheckValue);
+		checkValueInArray(scanner.nextInt(), arrayToCheckValue);
+
+
 		//		4.2 Generate array, sort and print
 		/*
-		int[] myArray = intArrayGenerator(10);
-		intArrayPrinter(myArray);
-		ascendingSortIntArray(myArray);
-		intArrayPrinter(myArray);
-		 */
+		int[] arrayToSortAscAndPrint = intArrayGenerator(10);
+		arrayPrinter(arrayToSortAscAndPrint);
+		ascendingSortIntArray(arrayToSortAscAndPrint);
+		arrayPrinter(arrayToSortAscAndPrint);
+		*/
 
 		//		4.3 Descending sorting of array
-		/*
-		int[] myArray = intArrayGenerator(10);
-		intArrayPrinter(myArray);
-		descendingSortIntArray(myArray);
-		intArrayPrinter(myArray);
-		 */
+/*
+		int[] arrayToSortDescAndPrint = intArrayGenerator(10);
+		arrayPrinter(arrayToSortDescAndPrint);
+		descendingSortIntArray(arrayToSortDescAndPrint);
+		arrayPrinter(arrayToSortDescAndPrint);
+*/
 
 		//		4.4 get index of input number
-		/*
-		int[] myArray = intArrayGenerator(10);
-		intArrayPrinter(myArray);
-		getIndexOfQueriedNumber(scanner.nextInt(), myArray);
+/*
+		int[] arrayToQueryValue = intArrayGenerator(10);
+		arrayPrinter(arrayToQueryValue);
+		getIndexOfQueriedNumber(scanner.nextInt(), arrayToQueryValue);
+*/
 
-		 */
 		//		4.5 Generate matrix, print it, find max value
-		/*
-		int[][] myMatrix = intMatrixGenerator(10, 15);
-		intMatrixPrinter(myMatrix);
-		System.out.println(intMatrixMaxValue(myMatrix));
+/*
+		int[][] matrixToCheckTheMaxValue = intMatrixGenerator(10, 15);
+		matrixPrinter(matrixToCheckTheMaxValue);
+		System.out.println(intMatrixMaxValue(matrixToCheckTheMaxValue));
 
-		 */
-
+*/
 		//		4.6 Generate matrix, print it, input the number of row, output the sum of elements of that row
-		/*
-		int[][] myMatrix = intMatrixGenerator(10, 15);
-		intMatrixPrinter(myMatrix);
+/*
+		int[][] matrixToPrintTheSumOfRow = intMatrixGenerator(10, 15);
+		matrixPrinter(matrixToPrintTheSumOfRow);
 		int rowNumber = scanner.nextInt();
-		System.out.println(sumOfRowValuesInMatrix(rowNumber, myMatrix) == -1 ? "Wrong input" : sumOfRowValuesInMatrix(rowNumber, myMatrix));
-
-		 */
-//		4.7 Rotate matrix 90 clockwise;
-		/*
-		int[][] myMatrix = intMatrixGenerator(4, 5);
-		intMatrixPrinter(myMatrix);
+		System.out.println(sumOfRowValuesInMatrix(rowNumber, matrixToPrintTheSumOfRow) == -1 ? "Wrong input" : sumOfRowValuesInMatrix(rowNumber, matrixToPrintTheSumOfRow));
+*/
+		//		4.7 Rotate matrix 90 clockwise;
+/*
+		int[][] matrixToRotateClockwise = intMatrixGenerator(4, 5);
+		matrixPrinter(matrixToRotateClockwise);
 		System.out.println("*********");
-		intMatrixPrinter(rotateMatrixClockWise(myMatrix));
+		matrixPrinter(rotateMatrixClockWise(matrixToRotateClockwise));
+*/
 
-		 */
-//		4.8 rotate 180
-		/*
-		int[][] myMatrix = intMatrixGenerator(4, 5);
-		intMatrixPrinter(myMatrix);
+		//		4.8 rotate 180
+/*
+		int[][] matrixToRotateUsideDown = intMatrixGenerator(4, 5);
+		matrixPrinter(matrixToRotateUsideDown);
 		System.out.println("*********");
-		intMatrixPrinter(turnMatrixUpsideDown(myMatrix));
+		matrixPrinter(turnMatrixUpsideDown(matrixToRotateUsideDown));
+*/
 
-		 */
-
-
-//		4.9 rotate 270
-		/*
-		int[][] myMatrix = intMatrixGenerator(4, 5);
-		intMatrixPrinter(myMatrix);
+		//		4.9 rotate 270
+/*
+		int[][] matrixToRotateCounterClockWise = intMatrixGenerator(10, 15);
+		matrixPrinter(matrixToRotateCounterClockWise);
 		System.out.println("*********");
-		intMatrixPrinter(rotateMatrixCounterClockWise(myMatrix));
-
-		 */
-
+		matrixPrinter(rotateMatrixCounterClockWise(matrixToRotateCounterClockWise));
+*/
+		//		4.10 rotate
+/*
+		int[][] matrixToRotate = intMatrixGenerator(2, 3);
+		matrixPrinter(matrixToRotate);
+		matrixCustomRotateBy(matrixToRotate);
+*/
 	}
 
 	public static int[] intArrayGenerator(int arrayLength) {
@@ -97,7 +95,7 @@ public class Main {
 		return intArray;
 	}
 
-	public static void intArrayPrinter(int[] array) {
+	public static void arrayPrinter(int[] array) {
 		for (int i : array) {
 			System.out.print(i + ", ");
 		}
@@ -141,9 +139,9 @@ public class Main {
 		return matrix;
 	}
 
-	public static void intMatrixPrinter(int[][] matrix) {
+	public static void matrixPrinter(int[][] matrix) {
 		for (int i = 0; i < matrix.length; i++) {
-			intArrayPrinter(matrix[i]);
+			arrayPrinter(matrix[i]);
 		}
 	}
 
@@ -160,30 +158,58 @@ public class Main {
 		return rowNumber < matrix.length ? IntStream.of(matrix[rowNumber]).sum() : -1;
 	}
 
-	public static int[][] rotateMatrixClockWise(int[][] matrix){
+	public static int[][] rotateMatrixClockWise(int[][] matrix) {
 		int[][] transposedMatrix = new int[matrix[0].length][matrix.length];
 		for (int i = 0; i < transposedMatrix.length; i++) {
 			for (int j = 0; j < transposedMatrix[i].length; j++) {
-				transposedMatrix[i][matrix.length-j-1]=matrix[j][i];
+				transposedMatrix[i][matrix.length - j - 1] = matrix[j][i];
 			}
 		}
 		return transposedMatrix;
 	}
 
-	public static int[][] rotateMatrixCounterClockWise(int[][] matrix){
+	public static int[][] rotateMatrixCounterClockWise(int[][] matrix) {
 		int[][] transposedMatrix = new int[matrix[0].length][matrix.length];
 		for (int i = 0; i < transposedMatrix.length; i++) {
 			for (int j = 0; j < transposedMatrix[i].length; j++) {
-				transposedMatrix[i][j]=matrix[j][matrix.length-i];
+				transposedMatrix[i][j] = matrix[j][matrix[j].length - 1 - i];
 			}
 		}
 		return transposedMatrix;
 	}
 
-	public static int[][] turnMatrixUpsideDown(int[][] matrix){
-		int[][] bottomUpMatrix = rotateMatrixClockWise(matrix);
-		bottomUpMatrix = rotateMatrixClockWise(bottomUpMatrix);
+	public static int[][] turnMatrixUpsideDown(int[][] matrix) {
+		int[][] bottomUpMatrix = new int[matrix.length][matrix[0].length];
+		for (int i = 0; i < bottomUpMatrix.length; i++) {
+			for (int j = 0; j < bottomUpMatrix[i].length; j++) {
+				bottomUpMatrix[i][j] = matrix[matrix.length - 1 - i][matrix[matrix.length - 1 - i].length - 1 - j];
+			}
+		}
 		return bottomUpMatrix;
+	}
+
+	public static void matrixCustomRotateBy(int[][] matrix) {
+		Scanner menuInput = new Scanner(System.in);
+		System.out.println("———————- MENU —————-\n1. For rotating 90\n2. For rotating 180\n3. For rotating 270\n4. For Exit\n———————-------—————-");
+		switch (menuInput.nextInt()) {
+			case 1:
+				matrixPrinter(rotateMatrixClockWise(matrix));
+				matrixCustomRotateBy(matrix);
+				break;
+			case 2:
+				matrixPrinter(turnMatrixUpsideDown(matrix));
+				matrixCustomRotateBy(matrix);
+				break;
+			case 3:
+				matrixPrinter(rotateMatrixCounterClockWise(matrix));
+				matrixCustomRotateBy(matrix);
+				break;
+			case 4:
+				return;
+			default:
+				System.out.println("Wrong input");
+				matrixCustomRotateBy(matrix);
+		}
 	}
 
 }
