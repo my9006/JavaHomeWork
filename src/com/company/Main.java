@@ -61,8 +61,17 @@ public class Main {
 		//		ascendingSortIntArray(intArrayGenerator(random));
 		//		5.13
 		//		descendingSortIntArray(intArrayGenerator(random));
-//5.14
-		primePrinter(100);
+		// 		5.14
+		//		primePrinter(100);
+		//		5.15
+		//		arrayPrinter(reverseArray(intArrayGenerator(random)));
+		//		5.16
+		//		System.out.println(isStringPalindrome("debed")?"Palindrome":"Not palindrome");
+		//		5.17
+		//		System.out.println(factorialCalculator(14));
+		//		5.18
+		//		stringMatrixPrinter(initializeRandomMatrix(10));
+
 	}
 
 	public static void twoNumberSum(int a, int b) {
@@ -164,6 +173,59 @@ public class Main {
 		}
 	}
 
+	public static int[] reverseArray(int[] array) {
+		int[] reversedArray = new int[array.length];
+		for (int i = 0; i < array.length; i++) {
+			reversedArray[i] = array[array.length - 1 - i];
+		}
+		return reversedArray;
+	}
 
+	public static boolean isStringPalindrome(String string) {
+		String reversedString = "";
+		for (int i = 0; i < string.length(); i++) {
+			reversedString += string.charAt(string.length() - i - 1);
+		}
+		return reversedString.equals(string);
+	}
+
+	public static long factorialCalculator(int number) {
+		long factorial = 1;
+		for (int i = 1; i < number + 1; i++) {
+			factorial *= i;
+		}
+		return factorial;
+	}
+
+	public static String[][] initializeRandomMatrix(int n) {
+		String[][] plusMinusMatrix = new String[n][n];
+		Random random = new Random();
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				plusMinusMatrix[i][j] = random.nextInt() % 2 == 0 ? "+" : "-";
+			}
+		}
+		return plusMinusMatrix;
+	}
+
+	public static void stringMatrixPrinter(String[][] matrix) {
+		for (String[] array : matrix) {
+			for (String element : array) {
+				System.out.print(element + ", ");
+			}
+			System.out.println("");
+		}
+	}
+
+	public static int[][] intMatrixGenerator(int size){
+		int[][] matrix = new int[size][size];
+		Random random = new Random();
+		for (int i = 0; i<size; i++) {
+			for (int j = 0; j < size; j++) {
+				matrix[i][j]=random.nextInt((78-27))+27;
+			}
+		}
+		return matrix;
+	}
 
 }
