@@ -1,214 +1,133 @@
 package com.company;
 
+import com.company.shapes.Point;
+import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
+
+import javax.naming.MalformedLinkException;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.stream.IntStream;
 
 public class Main {
 
 	public static void main(String[] args) {
+		Random random = new Random();
 		Scanner scanner = new Scanner(System.in);
-		//		4.1 Createa Array, Print it, query a value
+		//		5.1
+		//		twoNumberSum(random.nextInt(), random.nextInt());
 
-		int[] arrayToCheckValue = intArrayGenerator(10);
-		arrayPrinter(arrayToCheckValue);
-		checkValueInArray(scanner.nextInt(), arrayToCheckValue);
+		//		5.2
+		//		System.out.println("Input 2 numbers to get their sum");
+		//		twoNumberSum(scanner.nextInt(), scanner.nextInt());
+
+		//		5.3
+		//		System.out.println("Input two numbers to get the cube of their product");
+		//		calculateCubeOfProduct(scanner.nextInt(), scanner.nextInt());
+
+		//		5.4
+		//		System.out.println("Input three ints to get the smallest of them");
+		//		smallestOfThreeInts(scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
+
+		//		5.5
+		//		System.out.println("Input a string to get the middle character");
+		//		printMiddleCharacterOfString(scanner.next());
+
+		//		5.6
+		//		System.out.println("Input a sentence to get the number of Words");
+		//		printCountOfWords(scanner.nextLine());
+
+		//		5.7
+		//		System.out.println("Input the year to check whether it's leap or not");
+		//		isTheYearLeap(scanner.nextInt());
+
+		//		5.8
+		//		System.out.println("Input a string to check its validity as a password * Should cojntain at least 2 digits, be more or equal to 10 and contain only letters and numbers");
+		//		isPasswordValid(scanner.nextLine());
+
+		//		5.9
+		//		int radius = scanner.nextInt();
+		//		System.out.printf("The Area of %d radius circle is %f, and the circumference is %f", radius, calculateAreaOfCircle(radius), calculateCircumference(radius));
+		//		5.10
+		//		System.out.println("Input three sides of triangle");
+		//		int side1 = scanner.nextInt();
+		//		int side2 = scanner.nextInt();
+		//		int side3 = scanner.nextInt();
+		//		if(isTriangleValid(side1, side2, side3)){
+		//			System.out.printf("Perimeter is %d, and the area is %f", calculatePerimeterOfTriangle(side1, side2, side3), calculateAreaOfTriangle(side1, side2, side3));
+		//		}
+//		5.11
+//		arrayPrinter(intArrayGenerator(random));
 
 
-		//		4.2 Generate array, sort and print
-		/*
-		int[] arrayToSortAscAndPrint = intArrayGenerator(10);
-		arrayPrinter(arrayToSortAscAndPrint);
-		ascendingSortIntArray(arrayToSortAscAndPrint);
-		arrayPrinter(arrayToSortAscAndPrint);
-		*/
-
-		//		4.3 Descending sorting of array
-/*
-		int[] arrayToSortDescAndPrint = intArrayGenerator(10);
-		arrayPrinter(arrayToSortDescAndPrint);
-		descendingSortIntArray(arrayToSortDescAndPrint);
-		arrayPrinter(arrayToSortDescAndPrint);
-*/
-
-		//		4.4 get index of input number
-/*
-		int[] arrayToQueryValue = intArrayGenerator(10);
-		arrayPrinter(arrayToQueryValue);
-		getIndexOfQueriedNumber(scanner.nextInt(), arrayToQueryValue);
-*/
-
-		//		4.5 Generate matrix, print it, find max value
-/*
-		int[][] matrixToCheckTheMaxValue = intMatrixGenerator(10, 15);
-		matrixPrinter(matrixToCheckTheMaxValue);
-		System.out.println(intMatrixMaxValue(matrixToCheckTheMaxValue));
-
-*/
-		//		4.6 Generate matrix, print it, input the number of row, output the sum of elements of that row
-/*
-		int[][] matrixToPrintTheSumOfRow = intMatrixGenerator(10, 15);
-		matrixPrinter(matrixToPrintTheSumOfRow);
-		int rowNumber = scanner.nextInt();
-		System.out.println(sumOfRowValuesInMatrix(rowNumber, matrixToPrintTheSumOfRow) == -1 ? "Wrong input" : sumOfRowValuesInMatrix(rowNumber, matrixToPrintTheSumOfRow));
-*/
-		//		4.7 Rotate matrix 90 clockwise;
-/*
-		int[][] matrixToRotateClockwise = intMatrixGenerator(4, 5);
-		matrixPrinter(matrixToRotateClockwise);
-		System.out.println("*********");
-		matrixPrinter(rotateMatrixClockWise(matrixToRotateClockwise));
-*/
-
-		//		4.8 rotate 180
-/*
-		int[][] matrixToRotateUsideDown = intMatrixGenerator(4, 5);
-		matrixPrinter(matrixToRotateUsideDown);
-		System.out.println("*********");
-		matrixPrinter(turnMatrixUpsideDown(matrixToRotateUsideDown));
-*/
-
-		//		4.9 rotate 270
-/*
-		int[][] matrixToRotateCounterClockWise = intMatrixGenerator(10, 15);
-		matrixPrinter(matrixToRotateCounterClockWise);
-		System.out.println("*********");
-		matrixPrinter(rotateMatrixCounterClockWise(matrixToRotateCounterClockWise));
-*/
-		//		4.10 rotate
-/*
-		int[][] matrixToRotate = intMatrixGenerator(2, 3);
-		matrixPrinter(matrixToRotate);
-		matrixCustomRotateBy(matrixToRotate);
-*/
 	}
 
-	public static int[] intArrayGenerator(int arrayLength) {
-		int[] intArray = new int[arrayLength];
-		Random random = new Random();
-		int upperBound = 99;
-		int lowerBound = 10;
-		for (int i = 0; i < arrayLength; i++) {
-			intArray[i] = random.nextInt(upperBound - lowerBound) + lowerBound;
+	public static void twoNumberSum(int a, int b) {
+		System.out.println(a + b);
+	}
+
+	public static void calculateCubeOfProduct(int a, int b) {
+		System.out.println(Math.pow(a * b, 3));
+	}
+
+	public static void printMiddleCharacterOfString(String inputString) {
+		System.out.println(inputString.charAt(inputString.length() / 2));
+	}
+
+	public static void smallestOfThreeInts(int firstInt, int secondInt, int thidrInt) {
+		int[] inputIntArray = {firstInt, secondInt, thidrInt};
+		Arrays.sort(inputIntArray);
+		System.out.println(inputIntArray[0]);
+	}
+
+	public static void printCountOfWords(String sentence) {
+		System.out.println(sentence.length() - sentence.replaceAll(" ", "").length() + 1);
+	}
+
+	public static void isTheYearLeap(int year) {
+		if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+			System.out.printf("%d is leap", year);
+		} else {
+			System.out.printf("%d is not leap", year);
 		}
-		return intArray;
+	}
+
+	public static void isPasswordValid(String password) {
+		boolean valid = password.length() >= 10 && password.matches(".*\\d.*") && password.matches("\\w+\\.?") && password.length() - 2 >= password.replaceAll("[0-9]", "").length();
+		System.out.println(valid ? "password is valid" : "password is not valid");
+	}
+
+	public static double calculateCircumference(int radius) {
+		return 2 * Math.PI * radius;
+	}
+
+	public static double calculateAreaOfCircle(int radius) {
+		return Math.PI * Math.pow(radius, 2);
+	}
+
+	public static boolean isTriangleValid(int side1, int side2, int side3) {
+		return side1 + side2 > side3 || side2 + side3 > side1 || side1 + side3 > side2;
+	}
+
+	public static int calculatePerimeterOfTriangle(int side1, int side2, int side3) {
+		return side1 + side2 + side3;
+	}
+
+	public static double calculateAreaOfTriangle(int side1, int side2, int side3) {
+		int s = (side1 + side2 + side3) / 2;
+		return Math.sqrt(s * (s - side1) * (s - side2) * (s - side3));
+	}
+
+	public static int[] intArrayGenerator(Random random) {
+		int[] ints = new int[10];
+		for (int i = 0; i < 10; i++) {
+			ints[i] = random.nextInt();
+		}
+		return ints;
 	}
 
 	public static void arrayPrinter(int[] array) {
 		for (int i : array) {
 			System.out.print(i + ", ");
-		}
-		System.out.println();
-	}
-
-	public static void checkValueInArray(int value, int[] array) {
-		//		Dont panic, it just checks whether the given value exists in the array returning true / false, which after is checked by ternary operator
-		System.out.printf(IntStream.of(array).anyMatch(valueToCheck -> valueToCheck == value) ? "%d exists in given Array" : "%d doesn't exist in the Array", value);
-	}
-
-	public static void ascendingSortIntArray(int[] array) {
-		Arrays.sort(array);
-	}
-
-	public static void descendingSortIntArray(int[] array) {
-		ascendingSortIntArray(array);
-		for (int i = 0; i < array.length / 2; i++) {
-			int temp = array[i];
-			array[i] = array[array.length - i - 1];
-			array[array.length - i - 1] = temp;
-		}
-	}
-
-	public static void getIndexOfQueriedNumber(int queryNumber, int[] array) {
-		for (int i = 0; i < array.length; i++) {
-			if (array[i] == queryNumber) {
-				System.out.printf("The index of input number in array is %d", i);
-				return;
-			}
-		}
-		System.out.println("Number doesn't exist");
-	}
-
-	public static int[][] intMatrixGenerator(int rowCount, int columnCount) {
-		Random random = new Random();
-		int[][] matrix = new int[rowCount][columnCount];
-		for (int i = 0; i < rowCount; i++) {
-			matrix[i] = intArrayGenerator(columnCount);
-		}
-		return matrix;
-	}
-
-	public static void matrixPrinter(int[][] matrix) {
-		for (int i = 0; i < matrix.length; i++) {
-			arrayPrinter(matrix[i]);
-		}
-	}
-
-	public static int intMatrixMaxValue(int[][] matrix) {
-		int max = matrix[0][0];
-		for (int i = 0; i < matrix.length; i++) {
-			descendingSortIntArray(matrix[i]);
-			max = matrix[i][0] > max ? matrix[i][0] : max;
-		}
-		return max;
-	}
-
-	public static int sumOfRowValuesInMatrix(int rowNumber, int[][] matrix) {
-		return rowNumber < matrix.length ? IntStream.of(matrix[rowNumber]).sum() : -1;
-	}
-
-	public static int[][] rotateMatrixClockWise(int[][] matrix) {
-		int[][] transposedMatrix = new int[matrix[0].length][matrix.length];
-		for (int i = 0; i < transposedMatrix.length; i++) {
-			for (int j = 0; j < transposedMatrix[i].length; j++) {
-				transposedMatrix[i][matrix.length - j - 1] = matrix[j][i];
-			}
-		}
-		return transposedMatrix;
-	}
-
-	public static int[][] rotateMatrixCounterClockWise(int[][] matrix) {
-		int[][] transposedMatrix = new int[matrix[0].length][matrix.length];
-		for (int i = 0; i < transposedMatrix.length; i++) {
-			for (int j = 0; j < transposedMatrix[i].length; j++) {
-				transposedMatrix[i][j] = matrix[j][matrix[j].length - 1 - i];
-			}
-		}
-		return transposedMatrix;
-	}
-
-	public static int[][] turnMatrixUpsideDown(int[][] matrix) {
-		int[][] bottomUpMatrix = new int[matrix.length][matrix[0].length];
-		for (int i = 0; i < bottomUpMatrix.length; i++) {
-			for (int j = 0; j < bottomUpMatrix[i].length; j++) {
-				bottomUpMatrix[i][j] = matrix[matrix.length - 1 - i][matrix[matrix.length - 1 - i].length - 1 - j];
-			}
-		}
-		return bottomUpMatrix;
-	}
-
-	public static void matrixCustomRotateBy(int[][] matrix) {
-		Scanner menuInput = new Scanner(System.in);
-		System.out.println("———————- MENU —————-\n1. For rotating 90\n2. For rotating 180\n3. For rotating 270\n4. For Exit\n———————-------—————-");
-		switch (menuInput.nextInt()) {
-			case 1:
-				matrixPrinter(rotateMatrixClockWise(matrix));
-				matrixCustomRotateBy(matrix);
-				break;
-			case 2:
-				matrixPrinter(turnMatrixUpsideDown(matrix));
-				matrixCustomRotateBy(matrix);
-				break;
-			case 3:
-				matrixPrinter(rotateMatrixCounterClockWise(matrix));
-				matrixCustomRotateBy(matrix);
-				break;
-			case 4:
-				return;
-			default:
-				System.out.println("Wrong input");
-				matrixCustomRotateBy(matrix);
 		}
 	}
 
