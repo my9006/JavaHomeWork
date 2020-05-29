@@ -71,11 +71,11 @@ public class Main {
 		//		System.out.println(factorialCalculator(14));
 		//		5.18
 		//		stringMatrixPrinter(initializeRandomMatrix(10));
-//		5.19
-//		int [][] matrix = intMatrixGenerator(scanner.nextInt());
-//		rotateMatrixCounterClockWise(matrix);
-//		rotateMatrixClockWise(matrix);
-//		turnMatrixUpsideDown(matrix);
+		//		5.19
+		//		int [][] matrix = intMatrixGenerator(scanner.nextInt());
+		//		rotateMatrixCounterClockWise(matrix);
+		//		rotateMatrixClockWise(matrix);
+		//		turnMatrixUpsideDown(matrix);
 		helloMenu();
 
 	}
@@ -223,12 +223,12 @@ public class Main {
 		}
 	}
 
-	public static int[][] intMatrixGenerator(int size){
+	public static int[][] intMatrixGenerator(int size) {
 		int[][] matrix = new int[size][size];
 		Random random = new Random();
-		for (int i = 0; i<size; i++) {
+		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
-				matrix[i][j]=random.nextInt((78-27))+27;
+				matrix[i][j] = random.nextInt((78 - 27)) + 27;
 			}
 		}
 		return matrix;
@@ -264,7 +264,7 @@ public class Main {
 		return bottomUpMatrix;
 	}
 
-	public static void helloMenu(){
+	public static void helloMenu() {
 		System.out.println("------------------MENU-------------\n" +
 			"Press 1 -  to print “Hello Word”\n" +
 			"Press 2 -  to print “Hello Vorld”\n" +
@@ -272,7 +272,7 @@ public class Main {
 			"Press 4 -  EXIT\n" +
 			"--------------------------------------------\n");
 		Scanner scanner = new Scanner(System.in);
-		switch (scanner.nextInt()){
+		switch (scanner.nextInt()) {
 			case 1:
 				System.out.println("Hello World");
 				helloMenu();
@@ -285,11 +285,45 @@ public class Main {
 				System.out.println("Hello Uorld");
 				helloMenu();
 				break;
-			case 4: return;
+			case 4:
+				return;
 			default:
 				System.out.println("enter values 1-4");
 				helloMenu();
 
+		}
+	}
+
+	public static void matrixCustomRotateBy(int[][] matrix) {
+		Scanner menuInput = new Scanner(System.in);
+		System.out.println("———————- MENU —————-\n1. For rotating 90\n2. For rotating 180\n3. For rotating 270\n4. For Exit\n———————-------—————-");
+		switch (menuInput.nextInt()) {
+			case 1:
+				matrixPrinter(rotateMatrixClockWise(matrix));
+				matrixCustomRotateBy(matrix);
+				break;
+			case 2:
+				matrixPrinter(turnMatrixUpsideDown(matrix));
+				matrixCustomRotateBy(matrix);
+				break;
+			case 3:
+				matrixPrinter(rotateMatrixCounterClockWise(matrix));
+				matrixCustomRotateBy(matrix);
+				break;
+			case 4:
+				return;
+			default:
+				System.out.println("Wrong input");
+				matrixCustomRotateBy(matrix);
+		}
+	}
+
+	public static void matrixPrinter(int[][] matrix) {
+		for (int[] array: matrix){
+			for(int element:array){
+				System.out.print(element+", ");
+			}
+			System.out.println();
 		}
 	}
 
