@@ -55,10 +55,14 @@ public class Main {
 		//		if(isTriangleValid(side1, side2, side3)){
 		//			System.out.printf("Perimeter is %d, and the area is %f", calculatePerimeterOfTriangle(side1, side2, side3), calculateAreaOfTriangle(side1, side2, side3));
 		//		}
-//		5.11
-//		arrayPrinter(intArrayGenerator(random));
-
-
+		//		5.11
+		//		arrayPrinter(intArrayGenerator(random));
+		//		5.12
+		//		ascendingSortIntArray(intArrayGenerator(random));
+		//		5.13
+		//		descendingSortIntArray(intArrayGenerator(random));
+//5.14
+		primePrinter(100);
 	}
 
 	public static void twoNumberSum(int a, int b) {
@@ -130,5 +134,36 @@ public class Main {
 			System.out.print(i + ", ");
 		}
 	}
+
+	public static void ascendingSortIntArray(int[] array) {
+		Arrays.sort(array);
+	}
+
+	public static void descendingSortIntArray(int[] array) {
+		ascendingSortIntArray(array);
+		for (int i = 0; i < array.length / 2; i++) {
+			int temp = array[i];
+			array[i] = array[array.length - i - 1];
+			array[array.length - i - 1] = temp;
+		}
+	}
+
+	public static void primePrinter(int till) {
+		System.out.println(till >= 2 ? 2 : "");
+		for (int i = 2; i < till; i++) {
+			int divCount = 0;
+			for (int j = 2; j < Math.sqrt(i) + 1; j++) {
+				if (i % j == 0) {
+					divCount++;
+					break;
+				}
+			}
+			if (divCount == 0) {
+				System.out.println(i);
+			}
+		}
+	}
+
+
 
 }
