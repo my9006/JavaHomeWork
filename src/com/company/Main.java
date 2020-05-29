@@ -71,6 +71,12 @@ public class Main {
 		//		System.out.println(factorialCalculator(14));
 		//		5.18
 		//		stringMatrixPrinter(initializeRandomMatrix(10));
+//		5.19
+//		int [][] matrix = intMatrixGenerator(scanner.nextInt());
+//		rotateMatrixCounterClockWise(matrix);
+//		rotateMatrixClockWise(matrix);
+//		turnMatrixUpsideDown(matrix);
+		helloMenu();
 
 	}
 
@@ -226,6 +232,65 @@ public class Main {
 			}
 		}
 		return matrix;
+	}
+
+	public static int[][] rotateMatrixClockWise(int[][] matrix) {
+		int[][] transposedMatrix = new int[matrix[0].length][matrix.length];
+		for (int i = 0; i < transposedMatrix.length; i++) {
+			for (int j = 0; j < transposedMatrix[i].length; j++) {
+				transposedMatrix[i][matrix.length - j - 1] = matrix[j][i];
+			}
+		}
+		return transposedMatrix;
+	}
+
+	public static int[][] rotateMatrixCounterClockWise(int[][] matrix) {
+		int[][] transposedMatrix = new int[matrix[0].length][matrix.length];
+		for (int i = 0; i < transposedMatrix.length; i++) {
+			for (int j = 0; j < transposedMatrix[i].length; j++) {
+				transposedMatrix[i][j] = matrix[j][matrix[j].length - 1 - i];
+			}
+		}
+		return transposedMatrix;
+	}
+
+	public static int[][] turnMatrixUpsideDown(int[][] matrix) {
+		int[][] bottomUpMatrix = new int[matrix.length][matrix[0].length];
+		for (int i = 0; i < bottomUpMatrix.length; i++) {
+			for (int j = 0; j < bottomUpMatrix[i].length; j++) {
+				bottomUpMatrix[i][j] = matrix[matrix.length - 1 - i][matrix[matrix.length - 1 - i].length - 1 - j];
+			}
+		}
+		return bottomUpMatrix;
+	}
+
+	public static void helloMenu(){
+		System.out.println("------------------MENU-------------\n" +
+			"Press 1 -  to print “Hello Word”\n" +
+			"Press 2 -  to print “Hello Vorld”\n" +
+			"Press 3 -  to print “Hello Uorld”\n" +
+			"Press 4 -  EXIT\n" +
+			"--------------------------------------------\n");
+		Scanner scanner = new Scanner(System.in);
+		switch (scanner.nextInt()){
+			case 1:
+				System.out.println("Hello World");
+				helloMenu();
+				break;
+			case 2:
+				System.out.println("Hello Vorld");
+				helloMenu();
+				break;
+			case 3:
+				System.out.println("Hello Uorld");
+				helloMenu();
+				break;
+			case 4: return;
+			default:
+				System.out.println("enter values 1-4");
+				helloMenu();
+
+		}
 	}
 
 }
