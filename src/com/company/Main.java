@@ -1,20 +1,154 @@
 package com.company;
 
-import com.company.machine.VendingMachine;
+import apple.laf.JRSUIUtils;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class Main {
 
 	public static void main(String[] args) {
-		VendingMachine vm = new VendingMachine();
-		vm.printCurrentBoard();
-		System.out.println("_________________________________");
-		System.out.println("What do you want from me?");
-		Scanner scanner = new Scanner(System.in);
+		HashSet<String> set = new HashSet<>();
+		//		1
+		appendHashSet("vuy", set);
+		//		2
 
-		System.out.println(vm.getProduct(scanner.next()).getClass().getSimpleName());
-		System.out.println("_________________________________");
-		vm.printCurrentBoard();
+		set.add("234");
+
+		set.add("456");
+		set.add("123");
+
+
+		HashSet<String> set1 = new HashSet<>(set);
+		set.add("345");
+
+		intersectionOfSets(set, set1);
+
+		System.out.println(areSetsIdentical(set, set1));
+
+		Iterator iterator = iterateOverSet(set);
+
+		//		3
+		System.out.println(getHashSetSize(set));
+
+		//		4
+		emptyTheSet(set);
+		System.out.println(set.size());
+
+		//		cloneSet(set).forEach(v-> System.out.println(v));
+
+		convertHashSetToTreeSet(set).forEach(v -> System.out.println(v));
+
+		HashMap<String, Integer> original = new HashMap<String, Integer>() {{
+			put("asd", 123);
+			put("qwe", 234);
+		}};
+
+		System.out.println(isMapContainingKeyValue(original, "asd", 234));
+
 	}
+
+	//1
+	public static void appendHashSet(String element, Set<String> set) {
+		if (set.contains(element)) {
+			//			I know that it's not necessary, just want to use it
+			return;
+		}
+		set.add(element);
+	}
+
+	//2
+	public static Iterator iterateOverSet(Set set) {
+		Iterator iterator = set.iterator();
+		return iterator;
+	}
+
+	//3
+	public static int getHashSetSize(Set set) {
+		return set.size();
+	}
+
+	//4
+	public static void emptyTheSet(Set set) {
+		set.clear();
+	}
+
+	//5
+	public boolean isSetEmpty(Set set) {
+		return set.size() == 0;
+	}
+
+	//	6
+	public static HashSet cloneSet(Set set) {
+		return new HashSet(set);
+	}
+
+	//7
+	public static Object[] convertSetIntoArray(Set set) {
+		return set.toArray();
+	}
+
+	//8
+	public static TreeSet convertHashSetToTreeSet(Set set) {
+		return new TreeSet(set);
+	}
+
+	//9
+	public static ArrayList convertSetToArrayList(Set set) {
+		return new ArrayList(set);
+	}
+
+	//10
+	public static boolean areSetsIdentical(Set toCompare, Set compareWith) {
+		return toCompare.size() == compareWith.size() && !toCompare.retainAll(compareWith);
+	}
+
+	//11
+	public static Set intersectionOfSets(Set set1, Set set2) {
+		if (!set1.retainAll(set2)) {System.out.println("They are the same");}
+		set1.retainAll(set2);
+		return set1;
+	}
+
+	//	12
+	public static Set removeAllElements(Set set) {
+		set.removeAll(set);
+		return set;
+	}
+
+	//13
+	public static void addKeyValuetoMap(Map map, String key, String value) {
+		map.put(key, value);
+	}
+
+	//14
+	public static int getMapSize(Map map) {
+		return map.size();
+	}
+
+	//15
+	public static Map cloneMap(Map original) {
+		HashMap map = new HashMap();
+		map.putAll(original);
+		return map;
+	}
+
+	//16
+	public static void removeAllElementsFromMap(Map map) {
+		map.clear();
+	}
+
+//	17
+	public static boolean isMapContainingKeyValue(Map map, String key, int value){
+		return map.containsKey(key)&&map.get(key).equals(value);
+	}
+
 }
