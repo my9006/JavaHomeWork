@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
@@ -53,7 +54,8 @@ public class Main {
 		}};
 
 		System.out.println(isMapContainingKeyValue(original, "asd", 234));
-
+		System.out.println((setFromMap(original).getClass().getSimpleName()));
+		System.out.println(valuesOfMap(original));
 	}
 
 	//1
@@ -146,9 +148,38 @@ public class Main {
 		map.clear();
 	}
 
-//	17
-	public static boolean isMapContainingKeyValue(Map map, String key, int value){
-		return map.containsKey(key)&&map.get(key).equals(value);
+	//	17
+	public static boolean isMapContainingKeyValue(Map map, String key, int value) {
+		return map.containsKey(key) && map.get(key).equals(value);
 	}
+//	18
+	public static Map copyMap(Map map){
+		return new HashMap(map);
+	}
+//	19
+	public static boolean isMapContainingKey(Map map, Object key){
+		return map.containsKey(key);
+	}
+
+//	20
+	public static boolean isMapContainsValue(Map map, Object value){
+		return map.containsValue(value);
+	}
+//	21
+	 public static Set setFromMap(Map map){
+		return new HashSet(map.entrySet());
+	 }
+
+	 public static Object getValueOfKeyInMap(Map map, Object key){
+		return map.get(key);
+	 }
+
+	 public static Set keysOfMap(Map map){
+		return new HashSet(map.keySet());
+	 }
+
+	 public static List valuesOfMap(Map map){
+		return new ArrayList(map.values());
+	 }
 
 }
