@@ -1,185 +1,89 @@
 package com.company;
 
-import apple.laf.JRSUIUtils;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 public class Main {
 
 	public static void main(String[] args) {
-		HashSet<String> set = new HashSet<>();
-		//		1
-		appendHashSet("vuy", set);
-		//		2
+		//		1. Convert to uppercase
+		List<String> tarberCase = Arrays.asList("qwe", "qasd", "zxc", "wer");
+		List<String> upperCase = tarberCase.stream().map(e -> e.toUpperCase()).collect(Collectors.toList());
+		System.out.println(upperCase);
 
-		set.add("234");
+		//		2. Only four shall pass
+		List<String> randomSize = Arrays.asList("qwqweqw", "asa", "asdqw", "as", "xfsd", "qweqweasd", "as", "s", "fgf", "1312", "as");
+		List<String> fourSized = randomSize.stream().filter(el -> el.length() < 4).collect(Collectors.toList());
+		System.out.println(fourSized);
 
-		set.add("456");
-		set.add("123");
+		//		3. Flatten multidimensional creature
+		List<List<String>> dormamu = Arrays.asList(tarberCase, upperCase, randomSize, fourSized);
+		System.out.println(dormamu);
+		List<String> flatten = dormamu.stream().flatMap(Collection::stream).collect(Collectors.toList());
+		System.out.println(flatten);
 
-
-		HashSet<String> set1 = new HashSet<>(set);
-		set.add("345");
-
-		intersectionOfSets(set, set1);
-
-		System.out.println(areSetsIdentical(set, set1));
-
-		Iterator iterator = iterateOverSet(set);
-
-		//		3
-		System.out.println(getHashSetSize(set));
-
-		//		4
-		emptyTheSet(set);
-		System.out.println(set.size());
-
-		//		cloneSet(set).forEach(v-> System.out.println(v));
-
-		convertHashSetToTreeSet(set).forEach(v -> System.out.println(v));
-
-		HashMap<String, Integer> original = new HashMap<String, Integer>() {{
-			put("asd", 123);
-			put("qwe", 234);
+		//		4. Oldest guy
+		List<Person> ceranoc = new ArrayList<Person>() {{
+			add(new Person(82, "Hamo"));
+			add(new Person(84, "Abul"));
+			add(new Person(81, "Vram"));
+			add(new Person(94, "Gaspar"));
+			add(new Person(12, "Garegincho"));
+			add(new Person(77, "Albert"));
+			add(new Person(89, "Sofia Petrovna"));
 		}};
 
-		System.out.println(isMapContainingKeyValue(original, "asd", 234));
-		System.out.println((setFromMap(original).getClass().getSimpleName()));
-		System.out.println(valuesOfMap(original));
+		Person oldest = ceranoc.stream().reduce(ceranoc.get(0), (sub, el) -> sub.getAge() > el.getAge() ? sub : el);
+		System.out.println(oldest.getName());
+
+		//		5. Sum all elements
+		List<Integer> noSum = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
+		int saxObshi = noSum.stream().reduce(0, (thisOne, element) -> thisOne + element);
+
+
+		//		6. Get kids
+		List<Person> people = Arrays.asList(new Person(12, "Gayane"),
+			new Person(10, "Abul"),
+			new Person(20, "Vahramik"),
+			new Person(18, "Hasmik"),
+			new Person(29, "Soful"),
+			new Person(13, "Hmayak"),
+			new Person(14, "Sapog"),
+			new Person(15, "Ashtarak"),
+			new Person(16, "Popoq"),
+			new Person(17, "Hmayak Jan")
+		);
+
+		List<Person> pedofilist = people.stream().filter(el -> el.getAge() < 18).collect(Collectors.toList());
+		pedofilist.forEach(el -> System.out.print(el.getName() + "||"));
+
+		//		7. Separate kids from adults to avoid Filial cannibalism
+		Map<Boolean, List<Person>> sayNoToFilialCannibalism = people.stream().collect(Collectors.groupingBy(el -> el.getAge() >= 18));
+		System.out.println("\n");
+		sayNoToFilialCannibalism.get(true).forEach(el -> System.out.print(el.getAge() + "||" + el.getName() + "||"));
+
+		//		8. group by nationality
+		List<Person> dastakertBattleInvitationList = Arrays.asList(
+			new Person("Hayk", "Armenian"),
+			new Person("Marduk", "Babylonian"),
+			new Person("Nebuchadnezzar", "Babylonian"),
+			new Person("Aramanyak", "Armenian"),
+			new Person("Vital", "Babylonian"),
+			new Person("Amasya", "Armenian"),
+			new Person("Ara", "Armenian"),
+			new Person("Torgom", "Armenian"),
+			new Person("Bel", "Babylonian"));
+
+		Map<String, List<Person>> battleSides = dastakertBattleInvitationList.stream().collect(Collectors.groupingBy(el -> el.getNationality()));
+		System.out.println("\n");
+		battleSides.get("Babylonian").forEach(el -> System.out.print(el.getName() + "||"));
+//		9. Comma separated peoples name
+		String dastakertToString = dastakertBattleInvitationList.stream().map(Person::getName).collect(Collectors.joining(", "));
+
+		System.out.println("\n" + dastakertToString);
 	}
-
-	//1
-	public static void appendHashSet(String element, Set<String> set) {
-		if (set.contains(element)) {
-			//			I know that it's not necessary, just want to use it
-			return;
-		}
-		set.add(element);
-	}
-
-	//2
-	public static Iterator iterateOverSet(Set set) {
-		Iterator iterator = set.iterator();
-		return iterator;
-	}
-
-	//3
-	public static int getHashSetSize(Set set) {
-		return set.size();
-	}
-
-	//4
-	public static void emptyTheSet(Set set) {
-		set.clear();
-	}
-
-	//5
-	public boolean isSetEmpty(Set set) {
-		return set.size() == 0;
-	}
-
-	//	6
-	public static HashSet cloneSet(Set set) {
-		return new HashSet(set);
-	}
-
-	//7
-	public static Object[] convertSetIntoArray(Set set) {
-		return set.toArray();
-	}
-
-	//8
-	public static TreeSet convertHashSetToTreeSet(Set set) {
-		return new TreeSet(set);
-	}
-
-	//9
-	public static ArrayList convertSetToArrayList(Set set) {
-		return new ArrayList(set);
-	}
-
-	//10
-	public static boolean areSetsIdentical(Set toCompare, Set compareWith) {
-		return toCompare.size() == compareWith.size() && !toCompare.retainAll(compareWith);
-	}
-
-	//11
-	public static Set intersectionOfSets(Set set1, Set set2) {
-		if (!set1.retainAll(set2)) {System.out.println("They are the same");}
-		set1.retainAll(set2);
-		return set1;
-	}
-
-	//	12
-	public static Set removeAllElements(Set set) {
-		set.removeAll(set);
-		return set;
-	}
-
-	//13
-	public static void addKeyValuetoMap(Map map, String key, String value) {
-		map.put(key, value);
-	}
-
-	//14
-	public static int getMapSize(Map map) {
-		return map.size();
-	}
-
-	//15
-	public static Map cloneMap(Map original) {
-		HashMap map = new HashMap();
-		map.putAll(original);
-		return map;
-	}
-
-	//16
-	public static void removeAllElementsFromMap(Map map) {
-		map.clear();
-	}
-
-	//	17
-	public static boolean isMapContainingKeyValue(Map map, String key, int value) {
-		return map.containsKey(key) && map.get(key).equals(value);
-	}
-//	18
-	public static Map copyMap(Map map){
-		return new HashMap(map);
-	}
-//	19
-	public static boolean isMapContainingKey(Map map, Object key){
-		return map.containsKey(key);
-	}
-
-//	20
-	public static boolean isMapContainsValue(Map map, Object value){
-		return map.containsValue(value);
-	}
-//	21
-	 public static Set setFromMap(Map map){
-		return new HashSet(map.entrySet());
-	 }
-
-	 public static Object getValueOfKeyInMap(Map map, Object key){
-		return map.get(key);
-	 }
-
-	 public static Set keysOfMap(Map map){
-		return new HashSet(map.keySet());
-	 }
-
-	 public static List valuesOfMap(Map map){
-		return new ArrayList(map.values());
-	 }
-
 }
